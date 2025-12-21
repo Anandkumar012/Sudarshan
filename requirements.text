@@ -1,8 +1,0 @@
-#requirments.text
-pyTelegramBotAPI
-requests
-flask
-gunicorn
-flask
-threading
-os
