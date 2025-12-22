@@ -37,7 +37,10 @@ def tegbot() :
     "Azamgarh",
     "Orai",
     "Kanpur",
-    "Lucknow"
+    "Lucknow",
+    "Mumbai",
+    "Jaipur",
+    "Ahmedabad"
     ]
     botToken = os.environ.get('BOT_TOKEN')
 
