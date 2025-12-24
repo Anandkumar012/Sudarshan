@@ -1,4 +1,6 @@
 import requests
+import os
+
 
 #weather api
 def get_weather(getCity):
