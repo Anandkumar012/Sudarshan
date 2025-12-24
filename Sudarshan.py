@@ -1,4 +1,3 @@
-import requests
 import telebot
 from telebot import types
 from app import keep_alive
