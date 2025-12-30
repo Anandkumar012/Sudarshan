@@ -310,7 +310,7 @@ def tegbot() :
 #==============================================
 
 if __name__ == "__main__" :
-    try :
-        tegbot()
-    except Exception as e :
-        print(f"eroor as {e}")
+    #try :
+    tegbot()
+    #except Exception as e :
+        #print(f"error as {e}")
