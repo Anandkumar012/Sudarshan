@@ -199,7 +199,7 @@ def tegbot() :
 #==============================================
     
     #weather massage response 
-    @bot.callback_query_handler(func= lambda call : call.data = "weather")
+    @bot.callback_query_handler(func= lambda call : call.data == "weather")
     def send_message1(call) :
         btns = buttons(indian_cities)
         bot.send_message(call.message.chat.id, "✍🏻Enter your city name.", reply_markup = btns)
@@ -210,7 +210,7 @@ def tegbot() :
     @bot.message_handler(func = lambda message : True)
     def weather(message):
        try :
-           loc , cur  = get_weather(message.text)
+           loc, cur= get_weather(message.text)
             #Here , I am showing all data .formate is dict.
            reply = (f"=====🌤️WEATHER REPORT☀️=====\n📍COUNTRY : {loc['country']}\n📍REGION  : {loc['region']}\n📍CITY     : {loc['name']}\n🗓️DATE & ⏳TIME : {loc['localtime']}\n🌡️TEMPERATURE : {cur['temp_c']}°C\n🔥FEELS TEMPRATURE : {cur['feelslike_c']}°C\n🥵HUMIDITY    : {cur['humidity']} %\n🍃WIND        : {cur['wind_kph']} km/h\n👁️VISIBILITY : {cur['vis_km']} km\n🔊Last Update : {cur['last_updated']}")
            bot.send_message(message.chat.id , reply ,reply_markup = types.ReplyKeyboardRemove())
