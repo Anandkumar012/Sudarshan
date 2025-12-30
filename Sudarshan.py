@@ -107,9 +107,6 @@ location = {
     }
 }
 
-#question load in question.json , this is for demo
-load = {
-"Ch~01" : [
 
 
 #==============================================
