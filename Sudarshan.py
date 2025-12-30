@@ -199,7 +199,7 @@ def tegbot() :
 #==============================================
     
     #weather massage response 
-    @bot.message_handler(func= lambda message : == True if message=="weather" else False)
+    @bot.message_handler(func= lambda message :True if message=="weather" else False)
     def send_message1(message) :
         btns = buttons(indian_cities)
         bot.send_message(message.chat.id, "✍🏻Enter your city name.", reply_markup = btns)
