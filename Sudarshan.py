@@ -247,7 +247,9 @@ def tegbot() :
     #CLASS handler    
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
-        className = f"CLASS_{call.data[-2:]}"
+        #className = f"CLASS_{call.data[6:]}"
+        #update in feature 
+        className = 'CLASS_12'
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         sub_list = list(location[className].keys()) #fatch all subjects in location file 
