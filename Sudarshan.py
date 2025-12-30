@@ -193,21 +193,21 @@ def tegbot() :
     #start massege response 
     @bot.message_handler(commands = ["start"])
     def send_message(message) :
-        res_button = inline_buttons(['weather','quiz'])
+        res_button =buttons(['/weather','/quiz'])
         bot.send_message(message.chat.id , "👋🏻Hyy, I am weather bot.",reply_markup = res_button)
 
 #==============================================
     
     #weather massage response 
-    @bot.callback_query_handler(func= lambda call : call.data == "weather")
-    def send_message1(call) :
+    @bot.message_handler(func= lambda message : == True if message=="weather" else False)
+    def send_message1(message) :
         btns = buttons(indian_cities)
-        bot.send_message(call.message.chat.id, "✍🏻Enter your city name.", reply_markup = btns)
+        bot.send_message(message.chat.id, "✍🏻Enter your city name.", reply_markup = btns)
      
 #==============================================
     
     #weather details responser
-    @bot.message_handler(func = lambda message : True)
+    @bot.message_handler(func = lambda message : False if message == '/quiz' else True)
     def weather(message):
        try :
            loc, cur= get_weather(message.text)
