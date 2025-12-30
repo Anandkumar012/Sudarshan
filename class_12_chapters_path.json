@@ -1,0 +1,98 @@
+{
+'CLASS 12': {
+        'SUB ~ PHYSICS': [
+            'Ch~01 ELECTRIC CHARGES & FIELDS',
+            'Ch~02 ELECTROSTATIC POTENTIAL & CAPACITANCE',
+            'Ch~03 CURRENT ELECTRICITY',
+            'Ch~04 MOVING CHARGES & MAGNETISM',
+            'Ch~05 MAGNETISM & MATTER',
+            'Ch~06 ELECTROMAGNETIC INDUCTION',
+            'Ch~07 ALTERNATING CURRENT',
+            'Ch~08 ELECTROMAGNETIC WAVES',
+            'Ch~09 RAY OPTICS & OPTICAL INSTRUMENTS',
+            'Ch~10 WAVE OPTICS',
+            'Ch~11 DUAL NATURE OF RADIATION & MATTER',
+            'Ch~12 ATOMS',
+            'Ch~13 NUCLEI',
+            'Ch~14 SEMICONDUCTOR ELECTRONICS'
+        ],
+
+        'SUB ~ CHEMISTRY': [
+            'Ch~01 SOLID STATE',
+            'Ch~02 SOLUTIONS',
+            'Ch~03 ELECTROCHEMISTRY',
+            'Ch~04 CHEMICAL KINETICS',
+            'Ch~05 SURFACE CHEMISTRY',
+            'Ch~06 GENERAL PRINCIPLES & PROCESSES OF ISOLATION OF ELEMENTS',
+            'Ch~07 p-BLOCK ELEMENTS',
+            'Ch~08 d & f BLOCK ELEMENTS',
+            'Ch~09 COORDINATION COMPOUNDS',
+            'Ch~10 HALOALKANES & HALOARENES',
+            'Ch~11 ALCOHOLS, PHENOLS & ETHERS',
+            'Ch~12 ALDEHYDES, KETONES & CARBOXYLIC ACIDS',
+            'Ch~13 AMINES',
+            'Ch~14 BIOMOLECULES',
+            'Ch~15 POLYMERS',
+            'Ch~16 CHEMISTRY IN EVERYDAY LIFE'
+        ],
+
+        'SUB ~ MATHEMATICS': [
+            'Ch~01 RELATIONS & FUNCTIONS',
+            'Ch~02 INVERSE TRIGONOMETRIC FUNCTIONS',
+            'Ch~03 MATRICES',
+            'Ch~04 DETERMINANTS',
+            'Ch~05 CONTINUITY & DIFFERENTIABILITY',
+            'Ch~06 APPLICATION OF DERIVATIVES',
+            'Ch~07 INTEGRALS',
+            'Ch~08 APPLICATION OF INTEGRALS',
+            'Ch~09 DIFFERENTIAL EQUATIONS',
+            'Ch~10 VECTOR ALGEBRA',
+            'Ch~11 THREE DIMENSIONAL GEOMETRY',
+            'Ch~12 LINEAR PROGRAMMING',
+            'Ch~13 PROBABILITY'
+        ],
+
+        'SUB ~ GEOGRAPHY': [
+            'Ch~01 HUMAN GEOGRAPHY : NATURE & SCOPE',
+            'Ch~02 THE WORLD POPULATION',
+            'Ch~03 POPULATION COMPOSITION',
+            'Ch~04 HUMAN DEVELOPMENT',
+            'Ch~05 PRIMARY ACTIVITIES',
+            'Ch~06 SECONDARY ACTIVITIES',
+            'Ch~07 TERTIARY & QUATERNARY ACTIVITIES',
+            'Ch~08 TRANSPORT & COMMUNICATION',
+            'Ch~09 INTERNATIONAL TRADE',
+            'Ch~10 HUMAN SETTLEMENTS'
+        ],
+
+        'SUB ~ HISTORY': [
+            'Ch~01 BRICKS, BEADS AND BONES',
+            'Ch~02 KINGS, FARMERS AND TOWNS',
+            'Ch~03 KINSHIP, CASTE AND CLASS',
+            'Ch~04 THINKERS, BELIEFS AND BUILDINGS',
+            'Ch~05 THROUGH THE EYES OF TRAVELLERS',
+            'Ch~06 BHAKTI–SUFI TRADITIONS',
+            'Ch~07 AN IMPERIAL CAPITAL : VIJAYANAGARA',
+            'Ch~08 PEASANTS, ZAMINDARS AND THE STATE',
+            'Ch~09 KINGS AND CHRONICLES',
+            'Ch~10 COLONIALISM AND THE COUNTRYSIDE',
+            'Ch~11 REBELS AND THE RAJ',
+            'Ch~12 COLONIAL CITIES',
+            'Ch~13 MAHATMA GANDHI AND THE NATIONALIST MOVEMENT',
+            'Ch~14 UNDERSTANDING PARTITION',
+            'Ch~15 FRAMING THE CONSTITUTION'
+        ],
+
+        'SUB ~ POLITY': [
+            'Ch~01 THE CONSTITUTION : WHY AND HOW',
+            'Ch~02 RIGHTS IN THE INDIAN CONSTITUTION',
+            'Ch~03 ELECTION AND REPRESENTATION',
+            'Ch~04 EXECUTIVE',
+            'Ch~05 LEGISLATURE',
+            'Ch~06 JUDICIARY',
+            'Ch~07 FEDERALISM',
+            'Ch~08 LOCAL GOVERNMENTS',
+            'Ch~09 THE CONSTITUTION AS A LIVING DOCUMENT'
+        ]
+    }
+}
