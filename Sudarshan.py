@@ -207,7 +207,7 @@ def tegbot() :
 #==============================================
     
     #weather details responser
-    @bot.message_handler(func = lambda message : message.text != 'quiz')
+    @bot.message_handler(func = lambda message : not message.text.startswith('/'))
     def weather(message):
        try :
            loc, cur= get_weather(message.text)
