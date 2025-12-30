@@ -5,10 +5,11 @@ import os
 from weatherapi import get_weather
 import random 
 import threading
+import json
 
 #location file load in file ,this is for demo
 location = {
-    'CLASS 12': {
+    'CLASS_12': {
         'SUB ~ PHYSICS': [
             'Ch~01 ELECTRIC CHARGES & FIELDS',
             'Ch~02 ELECTROSTATIC POTENTIAL & CAPACITANCE',
@@ -110,11 +111,14 @@ location = {
 load = {
 "Ch~01" : [
 
-["विद्युत आवेश का SI मात्रक क्या है?" , ["कूलाम" , "वोल्ट" , "एम्पियर" , "न्यूटन"] , "कूलाम"],
 
-["समान आवेश एक-दूसरे के साथ क्या करते हैं?" , ["प्रतिकर्षण करते हैं" , "आकर्षण करते हैं" , "नष्ट हो जाते हैं" , "निष्क्रिय रहते हैं"] , "प्रतिकर्षण करते हैं"]
-]
-}
+#==============================================
+#json question load
+def load_question(file_path, chapter):
+    with open(file_path , 'r' , encoding='utf-8') as file :
+        load = json.load(file)
+        return load[chapter]
+
 
 #==============================================
 
@@ -147,10 +151,10 @@ def inline_buttons(btnName):
 #=============================================
 
 #quiz sent func
-def sent_quiz_poll(bot , chat_id , chapName) :
+def sent_quiz_poll(bot , chat_id , chapName,file_path) :
     if chat_id not in user_status :
         return
-    load_que = load[chapName] #load quest according to chapter 
+    load_que = load_question(file_path ,chapName) #load quest according to chapter 
     que = random.choice(load_que) 
         
     #bot send poll func
@@ -164,7 +168,7 @@ def sent_quiz_poll(bot , chat_id , chapName) :
     open_period = 15)
         
     #bot repeat questions func
-    threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapName]).start()
+    threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapName , file_path]).start()
 
 #==============================================
 
@@ -224,9 +228,9 @@ def tegbot() :
         chat_id = message.chat.id
         if chat_id not in user_status :
             user_status[chat_id] = 'BOT ACTIVE'
-            class_button = [ 'CLASS 12'] #all class button load in location file 
+            class_button = ['CLASS 12'] #all class button load in location file 
             all_btn = inline_buttons(class_button)
-            bot.send_message(chat_id, 'Select your subject',reply_markup = all_btn)
+            bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
             bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics → Chapter 1\nI will all data for this bot early')
         else :
             bot.send_message(chat_id , 'you are already start quiz ')
@@ -236,12 +240,13 @@ def tegbot() :
     #CLASS handler    
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
+        className = f"CLASS_{call.data[-2:]}"
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
-        sub_list = list(location[call.data].keys()) #fatch all subjects in location file 
+        sub_list = list(location[className].keys()) #fatch all subjects in location file 
         all_btn = inline_buttons(sub_list)
-        bot.send_message(chat_id, 'select you Subject', reply_markup = all_btn)
-        bot_memory[chat_id] = call.data     
+        bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
+        bot_memory[chat_id] = className    
     
 #==============================================
  
@@ -253,7 +258,8 @@ def tegbot() :
         all_chap = list(location[bot_memory[chat_id]][call.data]
         ) #facth chapter's in location file
         all_btn = inline_buttons(all_chap)
-        bot.send_message(chat_id , 'select you chapter', reply_markup = all_btn)
+        bot.send_message(chat_id , '✍🏻 SELECT YOUR CHAPTER.', reply_markup = all_btn)
+        bot_memory[f"SUB{chat_id}"] = call.data.removeprefix('SUB ~ ')
         
  #==============================================
        
@@ -261,14 +267,11 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
     def question(call) :
         chat_id = call.message.chat.id
-        call_id = call.data[:5]
+        chapterName = call.data[:5]
         bot.answer_callback_query(call.id)
-#=========this condition for time limeted======= 
-        if call.data == 'Ch~01 ELECTRIC CHARGES & FIELDS' :
-            bot.send_message(chat_id, 'quiz start in 5 Sec')
-            sent_quiz_poll(bot , chat_id , call_id)
-        else :
-            bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse this time data are not available\nIt is working only for class 12 → physics → Chapter 1\nI am fixed this bot early')
+        bot.send_message(chat_id, '📢 Quiz START')
+        file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
+        sent_quiz_poll(bot , chat_id , chapterName,file_path)
 
 #==============================================
 
@@ -282,6 +285,9 @@ def tegbot() :
                 f"👤 QUIZ STOPPED by {user_name}.\n"
                 f"✍🏻 If you want to restart quiz sent me /quiz")
             del user_status[chat_id]
+            del bot_memory[chat_id]
+            if f"SUB{chat_id}" in bot_memory :
+                del bot_memory[f"SUB{chat_id}"]
             bot.send_message(chat_id , stop_text)
         else :
             pass
