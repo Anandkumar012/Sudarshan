@@ -107,7 +107,17 @@ location = {
     }
 }
 
+#==============================================
 
+#random option creation method
+def random_opts(options) :
+    opts = []
+    while len(options) != 0 :
+        ran_opt = random.choice(options)
+        opts.append(ran_opt)
+        options.remove(ran_opt)
+    else :
+        return opts
 
 #==============================================
 #json question load
@@ -158,7 +168,7 @@ def sent_quiz_poll(bot , chat_id , chapName,file_path) :
     send_poll = bot.send_poll(
     chat_id = chat_id,
     question = que[0],
-    options = que[1],
+    options = random_opts(que[1]),
     type = "quiz",
     correct_option_id = que[1].index(que[2]),
     is_anonymous = False,
