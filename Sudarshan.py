@@ -163,7 +163,8 @@ def sent_quiz_poll(bot , chat_id , chapName,file_path) :
         return
     load_que = load_question(file_path ,chapName) #load quest according to chapter 
     que = random.choice(load_que) 
-        
+    print(que)
+    print(random_opts(que[1]))    
     #bot send poll func
     send_poll = bot.send_poll(
     chat_id = chat_id,
