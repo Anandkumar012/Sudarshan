@@ -213,7 +213,7 @@ def tegbot() :
            loc , cur  = get_weather(message.text)
             #Here , I am showing all data .formate is dict.
            reply = (f"=====🌤️WEATHER REPORT☀️=====\n📍COUNTRY : {loc['country']}\n📍REGION  : {loc['region']}\n📍CITY     : {loc['name']}\n🗓️DATE & ⏳TIME : {loc['localtime']}\n🌡️TEMPERATURE : {cur['temp_c']}°C\n🔥FEELS TEMPRATURE : {cur['feelslike_c']}°C\n🥵HUMIDITY    : {cur['humidity']} %\n🍃WIND        : {cur['wind_kph']} km/h\n👁️VISIBILITY : {cur['vis_km']} km\n🔊Last Update : {cur['last_updated']}")
-           bot.send_message(message.chat.id , reply ,reply_markup = types ReplyKeyboardRemove())
+           bot.send_message(message.chat.id , reply ,reply_markup = types.ReplyKeyboardRemove())
        except ValueError :
            bot.send_message(message.chat.id , "City not found")
 
