@@ -293,7 +293,7 @@ def tegbot() :
         chat_id = message.chat.id
         if chat_id not in user_status :
             user_status[chat_id] = 'BOT ACTIVE'
-            class_button = ['CLASS 12','CLASS 09] #all class button load in location file 
+            class_button = ['CLASS 12','CLASS 09'] #all class button load in location file 
             all_btn = inline_buttons(class_button)
             bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
             bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
