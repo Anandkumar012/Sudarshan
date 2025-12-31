@@ -10,7 +10,7 @@ import json
 #=============================================
 
 #location file load in file ,this is for demo
-def loc()
+def loc():
     path = "Chapter_location.json"
     with open(path , 'r' , encoding='utf-8') as file :
         location = json.load(file)
