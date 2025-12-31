@@ -367,12 +367,12 @@ def tegbot() :
 
     keep_alive()
     print("Bot is running now .... ")
-    bot.polling(none_stop = True,allowed_updates=["message", "poll", "poll_answer","callback_query"])
+    bot.infinity_polling(timeout=60, long_polling_timeout=60,allowed_updates=["message", "poll", "poll_answer","callback_query"])
     
 #==============================================
 
 if __name__ == "__main__" :
-    #try :
-    tegbot()
-    #except Exception as e :
-        #print(f"error as {e}")
+    try :
+        tegbot()
+    except Exception as e :
+        print(f"error as {e}")
