@@ -234,14 +234,14 @@ def tegbot() :
     @bot.message_handler(commands = ["quiz"])
     def quiz(message) :
         chat_id = message.chat.id
-        #if chat_id not in user_status :
-        user_status[chat_id] = 'BOT ACTIVE'
-        class_button = ['CLASS 12'] #all class button load in location file 
-        all_btn = inline_buttons(class_button)
-        bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
-        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics → Chapter 1\nI will all data for this bot early')
-        #else :
-            #bot.send_message(chat_id , 'you are already start quiz ')
+        if chat_id not in user_status :
+            user_status[chat_id] = 'BOT ACTIVE'
+            class_button = ['CLASS 12'] #all class button load in location file 
+            all_btn = inline_buttons(class_button)
+            bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
+            bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
+        else :
+            bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
 
 #==============================================
            
@@ -295,7 +295,7 @@ def tegbot() :
                 f"👤 QUIZ STOPPED by {user_name}.\n"
                 f"✍🏻 If you want to restart quiz sent me /quiz")
             del user_status[chat_id]
-            if bot_memory[chat_id] in bot_memory
+            if bot_memory[chat_id] in bot_memory :
                 del bot_memory[chat_id]
             if f"SUB{chat_id}" in bot_memory :
                 del bot_memory[f"SUB{chat_id}"]
