@@ -167,12 +167,16 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
         className = f"CLASS_{call.data[6:]}"
+        print(className)
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
+        print("className")
         location = loc()
         if location == None :
+            print("data")
             return
         sub_list = list(location[className].keys()) #fatch all subjects in location file 
+        print(sub_list)
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
         bot_memory[chat_id] = className    
