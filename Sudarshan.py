@@ -227,7 +227,10 @@ def tegbot() :
 
     keep_alive()
     print("Bot is running now .... ")
-    bot.infinity_polling(timeout=60, long_polling_timeout=60,allowed_updates=["message", "poll", "poll_answer","callback_query"])
+    try :
+        bot.infinity_polling(timeout=60, long_polling_timeout=60,allowed_updates=["message", "poll", "poll_answer","callback_query"])
+    except Exception as e:
+        print("polling error :" e)
     
 #==============================================
 
