@@ -11,7 +11,7 @@
             "Ch~08 ELECTROMAGNETIC WAVES",
             "Ch~09 RAY OPTICS & OPTICAL INSTRUMENTS",
             "Ch~10 WAVE OPTICS",
-            "Ch~11 DUAL NATURE OF RADIATION & MATTER",
+            "Ch~11 hun DUAL NATURE OF RADIATION & MATTER",
             "Ch~12 ATOMS",
             "Ch~13 NUCLEI",
             "Ch~14 SEMICONDUCTOR ELECTRONICS"
@@ -37,120 +37,120 @@
         ],
 
         "SUB ~ MATHEMATICS": [
-            'Ch~01 RELATIONS & FUNCTIONS',
-            'Ch~02 INVERSE TRIGONOMETRIC FUNCTIONS',
-            'Ch~03 MATRICES',
-            'Ch~04 DETERMINANTS',
-            'Ch~05 CONTINUITY & DIFFERENTIABILITY',
-            'Ch~06 APPLICATION OF DERIVATIVES',
-            'Ch~07 INTEGRALS',
-            'Ch~08 APPLICATION OF INTEGRALS',
-            'Ch~09 DIFFERENTIAL EQUATIONS',
-            'Ch~10 VECTOR ALGEBRA',
-            'Ch~11 THREE DIMENSIONAL GEOMETRY',
-            'Ch~12 LINEAR PROGRAMMING',
-            'Ch~13 PROBABILITY'
+            "Ch~01 RELATIONS & FUNCTIONS",
+            "Ch~02 INVERSE TRIGONOMETRIC FUNCTIONS",
+            "Ch~03 MATRICES",
+            "Ch~04 DETERMINANTS",
+            "Ch~05 CONTINUITY & DIFFERENTIABILITY",
+            "Ch~06 APPLICATION OF DERIVATIVES",
+            "Ch~07 INTEGRALS",
+            "Ch~08 APPLICATION OF INTEGRALS",
+            "Ch~09 DIFFERENTIAL EQUATIONS",
+            "Ch~10 VECTOR ALGEBRA",
+            "Ch~11 THREE DIMENSIONAL GEOMETRY",
+            "Ch~12 LINEAR PROGRAMMING",
+            "Ch~13 PROBABILITY"
         ],
 
         "SUB ~ GEOGRAPHY": [
-            'Ch~01 HUMAN GEOGRAPHY : NATURE & SCOPE',
-            'Ch~02 THE WORLD POPULATION',
-            'Ch~03 POPULATION COMPOSITION',
-            'Ch~04 HUMAN DEVELOPMENT',
-            'Ch~05 PRIMARY ACTIVITIES',
-            'Ch~06 SECONDARY ACTIVITIES',
-            'Ch~07 TERTIARY & QUATERNARY ACTIVITIES',
-            'Ch~08 TRANSPORT & COMMUNICATION',
-            'Ch~09 INTERNATIONAL TRADE',
-            'Ch~10 HUMAN SETTLEMENTS'
+            "Ch~01 HUMAN GEOGRAPHY : NATURE & SCOPE",
+            "Ch~02 THE WORLD POPULATION",
+            "Ch~03 POPULATION COMPOSITION",
+            "Ch~04 HUMAN DEVELOPMENT",
+            "Ch~05 PRIMARY ACTIVITIES",
+            "Ch~06 SECONDARY ACTIVITIES",
+            "Ch~07 TERTIARY & QUATERNARY ACTIVITIES",
+            "Ch~08 TRANSPORT & COMMUNICATION",
+            "Ch~09 INTERNATIONAL TRADE",
+            "Ch~10 HUMAN SETTLEMENTS"
         ],
 
         "SUB ~ HISTORY": [
-            'Ch~01 BRICKS, BEADS AND BONES',
-            'Ch~02 KINGS, FARMERS AND TOWNS',
-            'Ch~03 KINSHIP, CASTE AND CLASS',
-            'Ch~04 THINKERS, BELIEFS AND BUILDINGS',
-            'Ch~05 THROUGH THE EYES OF TRAVELLERS',
-            'Ch~06 BHAKTI–SUFI TRADITIONS',
-            'Ch~07 AN IMPERIAL CAPITAL : VIJAYANAGARA',
-            'Ch~08 PEASANTS, ZAMINDARS AND THE STATE',
-            'Ch~09 KINGS AND CHRONICLES',
-            'Ch~10 COLONIALISM AND THE COUNTRYSIDE',
-            'Ch~11 REBELS AND THE RAJ',
-            'Ch~12 COLONIAL CITIES',
-            'Ch~13 MAHATMA GANDHI AND THE NATIONALIST MOVEMENT',
-            'Ch~14 UNDERSTANDING PARTITION',
-            'Ch~15 FRAMING THE CONSTITUTION'
+            "Ch~01 BRICKS, BEADS AND BONES",
+            "Ch~02 KINGS, FARMERS AND TOWNS",
+            "Ch~03 KINSHIP, CASTE AND CLASS",
+            "Ch~04 THINKERS, BELIEFS AND BUILDINGS",
+            "Ch~05 THROUGH THE EYES OF TRAVELLERS",
+            "Ch~06 BHAKTI–SUFI TRADITIONS",
+            "Ch~07 AN IMPERIAL CAPITAL : VIJAYANAGARA",
+            "Ch~08 PEASANTS, ZAMINDARS AND THE STATE",
+            "Ch~09 KINGS AND CHRONICLES",
+            "Ch~10 COLONIALISM AND THE COUNTRYSIDE",
+            "Ch~11 REBELS AND THE RAJ",
+            "Ch~12 COLONIAL CITIES",
+            "Ch~13 MAHATMA GANDHI AND THE NATIONALIST MOVEMENT",
+            "Ch~14 UNDERSTANDING PARTITION",
+            "Ch~15 FRAMING THE CONSTITUTION"
         ],
 
         "SUB ~ POLITY": [
-            'Ch~01 THE CONSTITUTION : WHY AND HOW',
-            'Ch~02 RIGHTS IN THE INDIAN CONSTITUTION',
-            'Ch~03 ELECTION AND REPRESENTATION',
-            'Ch~04 EXECUTIVE',
-            'Ch~05 LEGISLATURE',
-            'Ch~06 JUDICIARY',
-            'Ch~07 FEDERALISM',
-            'Ch~08 LOCAL GOVERNMENTS',
-            'Ch~09 THE CONSTITUTION AS A LIVING DOCUMENT'
-        ]
+            "Ch~01 THE CONSTITUTION : WHY AND HOW",
+            "Ch~02 RIGHTS IN THE INDIAN CONSTITUTION",
+            "Ch~03 ELECTION AND REPRESENTATION",
+            "Ch~04 EXECUTIVE",
+            "Ch~05 LEGISLATURE",
+            "Ch~06 JUDICIARY",
+            "Ch~07 FEDERALISM",
+            "Ch~08 LOCAL GOVERNMENTS",
+            "Ch~09 THE CONSTITUTION AS A LIVING DOCUMENT"
+        ],
     },
 
     "CLASS_09": {
         "SUB ~ PHYSICS": [
-            'Ch~01 MOTION',
-            'Ch~02 FORCE AND LAWS OF MOTION',
-            'Ch~03 GRAVITATION',
-            'Ch~04 WORK AND ENERGY',
-            'Ch~05 SOUND'
+            "Ch~01 MOTION",
+            "Ch~02 FORCE AND LAWS OF MOTION",
+            "Ch~03 GRAVITATION",
+            "Ch~04 WORK AND ENERGY",
+            "Ch~05 SOUND"
         ],
 
         "SUB ~ MATHEMATICS": [
-            'Ch~01 NUMBER SYSTEMS',
-            'Ch~02 POLYNOMIALS',
-            'Ch~03 COORDINATE GEOMETRY',
-            'Ch~04 LINEAR EQUATIONS IN TWO VARIABLES',
-            'Ch~05 TRIANGLES'
+            "Ch~01 NUMBER SYSTEMS",
+            "Ch~02 POLYNOMIALS",
+            "Ch~03 COORDINATE GEOMETRY",
+            "Ch~04 LINEAR EQUATIONS IN TWO VARIABLES",
+            "Ch~05 TRIANGLES"
         ],
 
         "SUB ~ CHEMISTRY": [
-            'Ch~01 MATTER IN OUR SURROUNDINGS',
-            'Ch~02 IS MATTER AROUND US PURE',
-            'Ch~03 ATOMS AND MOLECULES',
-            'Ch~04 STRUCTURE OF ATOM',
-            'Ch~05 CHEMICAL REACTIONS AND EQUATIONS'
+            "Ch~01 MATTER IN OUR SURROUNDINGS",
+            "Ch~02 IS MATTER AROUND US PURE",
+            "Ch~03 ATOMS AND MOLECULES",
+            "Ch~04 STRUCTURE OF ATOM",
+            "Ch~05 CHEMICAL REACTIONS AND EQUATIONS"
         ],
 
         "SUB ~ BIOLOGY": [
-            'Ch~01 THE FUNDAMENTAL UNIT OF LIFE',
-            'Ch~02 TISSUES',
-            'Ch~03 DIVERSITY IN LIVING ORGANISMS',
-            'Ch~04 WHY DO WE FALL ILL',
-            'Ch~05 NATURAL RESOURCES'
+            "Ch~01 THE FUNDAMENTAL UNIT OF LIFE",
+            "Ch~02 TISSUES",
+            "Ch~03 DIVERSITY IN LIVING ORGANISMS",
+            "Ch~04 WHY DO WE FALL ILL",
+            "Ch~05 NATURAL RESOURCES"
         ],
 
         "SUB ~ GEOGRAPHY": [
-            'Ch~01 INDIA – SIZE AND LOCATION',
-            'Ch~02 PHYSICAL FEATURES OF INDIA',
-            'Ch~03 DRAINAGE',
-            'Ch~04 CLIMATE',
-            'Ch~05 NATURAL VEGETATION AND WILDLIFE'
+            "Ch~01 INDIA – SIZE AND LOCATION",
+            "Ch~02 PHYSICAL FEATURES OF INDIA",
+            "Ch~03 DRAINAGE",
+            "Ch~04 CLIMATE",
+            "Ch~05 NATURAL VEGETATION AND WILDLIFE"
         ],
 
         "SUB ~ HISTORY": [
-            'Ch~01 THE FRENCH REVOLUTION',
-            'Ch~02 SOCIALISM IN EUROPE AND THE RUSSIAN REVOLUTION',
-            'Ch~03 NAZISM AND THE RISE OF HITLER',
-            'Ch~04 FOREST SOCIETY AND COLONIALISM',
-            'Ch~05 PASTORALISTS IN THE MODERN WORLD'
+            "Ch~01 THE FRENCH REVOLUTION",
+            "Ch~02 SOCIALISM IN EUROPE AND THE RUSSIAN REVOLUTION",
+            "Ch~03 NAZISM AND THE RISE OF HITLER",
+            "Ch~04 FOREST SOCIETY AND COLONIALISM",
+            "Ch~05 PASTORALISTS IN THE MODERN WORLD"
         ],
 
         "SUB ~ POLITY": [
-            'Ch~01 WHAT IS DEMOCRACY? WHY DEMOCRACY?',
-            'Ch~02 CONSTITUTIONAL DESIGN',
-            'Ch~03 ELECTORAL POLITICS',
-            'Ch~04 WORKING OF INSTITUTIONS',
-            'Ch~05 DEMOCRATIC RIGHTS'
+            "Ch~01 WHAT IS DEMOCRACY? WHY DEMOCRACY?",
+            "Ch~02 CONSTITUTIONAL DESIGN",
+            "Ch~03 ELECTORAL POLITICS",
+            "Ch~04 WORKING OF INSTITUTIONS",
+            "Ch~05 DEMOCRATIC RIGHTS"
         ]
     }
 }
