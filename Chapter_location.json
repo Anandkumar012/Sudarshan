@@ -1,6 +1,6 @@
 {
-    'CLASS_12': {
-        'SUB ~ PHYSICS': [
+    "CLASS_12": {
+        "SUB ~ PHYSICS": [
             'Ch~01 ELECTRIC CHARGES & FIELDS',
             'Ch~02 ELECTROSTATIC POTENTIAL & CAPACITANCE',
             'Ch~03 CURRENT ELECTRICITY',
@@ -17,7 +17,7 @@
             'Ch~14 SEMICONDUCTOR ELECTRONICS'
         ],
 
-        'SUB ~ CHEMISTRY': [
+        "SUB ~ CHEMISTRY": [
             'Ch~01 SOLID STATE',
             'Ch~02 SOLUTIONS',
             'Ch~03 ELECTROCHEMISTRY',
@@ -36,7 +36,7 @@
             'Ch~16 CHEMISTRY IN EVERYDAY LIFE'
         ],
 
-        'SUB ~ MATHEMATICS': [
+        "SUB ~ MATHEMATICS": [
             'Ch~01 RELATIONS & FUNCTIONS',
             'Ch~02 INVERSE TRIGONOMETRIC FUNCTIONS',
             'Ch~03 MATRICES',
@@ -52,7 +52,7 @@
             'Ch~13 PROBABILITY'
         ],
 
-        'SUB ~ GEOGRAPHY': [
+        "SUB ~ GEOGRAPHY": [
             'Ch~01 HUMAN GEOGRAPHY : NATURE & SCOPE',
             'Ch~02 THE WORLD POPULATION',
             'Ch~03 POPULATION COMPOSITION',
@@ -65,7 +65,7 @@
             'Ch~10 HUMAN SETTLEMENTS'
         ],
 
-        'SUB ~ HISTORY': [
+        "SUB ~ HISTORY": [
             'Ch~01 BRICKS, BEADS AND BONES',
             'Ch~02 KINGS, FARMERS AND TOWNS',
             'Ch~03 KINSHIP, CASTE AND CLASS',
@@ -83,7 +83,7 @@
             'Ch~15 FRAMING THE CONSTITUTION'
         ],
 
-        'SUB ~ POLITY': [
+        "SUB ~ POLITY": [
             'Ch~01 THE CONSTITUTION : WHY AND HOW',
             'Ch~02 RIGHTS IN THE INDIAN CONSTITUTION',
             'Ch~03 ELECTION AND REPRESENTATION',
@@ -96,8 +96,8 @@
         ]
     },
 
-    'CLASS_09': {
-        'SUB ~ PHYSICS': [
+    "CLASS_09": {
+        "SUB ~ PHYSICS": [
             'Ch~01 MOTION',
             'Ch~02 FORCE AND LAWS OF MOTION',
             'Ch~03 GRAVITATION',
@@ -105,7 +105,7 @@
             'Ch~05 SOUND'
         ],
 
-        'SUB ~ MATHEMATICS': [
+        "SUB ~ MATHEMATICS": [
             'Ch~01 NUMBER SYSTEMS',
             'Ch~02 POLYNOMIALS',
             'Ch~03 COORDINATE GEOMETRY',
@@ -113,7 +113,7 @@
             'Ch~05 TRIANGLES'
         ],
 
-        'SUB ~ CHEMISTRY': [
+        "SUB ~ CHEMISTRY": [
             'Ch~01 MATTER IN OUR SURROUNDINGS',
             'Ch~02 IS MATTER AROUND US PURE',
             'Ch~03 ATOMS AND MOLECULES',
@@ -121,7 +121,7 @@
             'Ch~05 CHEMICAL REACTIONS AND EQUATIONS'
         ],
 
-        'SUB ~ BIOLOGY': [
+        "SUB ~ BIOLOGY": [
             'Ch~01 THE FUNDAMENTAL UNIT OF LIFE',
             'Ch~02 TISSUES',
             'Ch~03 DIVERSITY IN LIVING ORGANISMS',
@@ -129,7 +129,7 @@
             'Ch~05 NATURAL RESOURCES'
         ],
 
-        'SUB ~ GEOGRAPHY': [
+        "SUB ~ GEOGRAPHY": [
             'Ch~01 INDIA – SIZE AND LOCATION',
             'Ch~02 PHYSICAL FEATURES OF INDIA',
             'Ch~03 DRAINAGE',
@@ -137,7 +137,7 @@
             'Ch~05 NATURAL VEGETATION AND WILDLIFE'
         ],
 
-        'SUB ~ HISTORY': [
+        "SUB ~ HISTORY": [
             'Ch~01 THE FRENCH REVOLUTION',
             'Ch~02 SOCIALISM IN EUROPE AND THE RUSSIAN REVOLUTION',
             'Ch~03 NAZISM AND THE RISE OF HITLER',
@@ -145,7 +145,7 @@
             'Ch~05 PASTORALISTS IN THE MODERN WORLD'
         ],
 
-        'SUB ~ POLITY': [
+        "SUB ~ POLITY": [
             'Ch~01 WHAT IS DEMOCRACY? WHY DEMOCRACY?',
             'Ch~02 CONSTITUTIONAL DESIGN',
             'Ch~03 ELECTORAL POLITICS',
