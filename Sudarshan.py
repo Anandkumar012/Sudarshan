@@ -7,10 +7,14 @@ import random
 import threading
 import json
 
+#=============================================
+
 #location file load in file ,this is for demo
-path = "Chapter_location.json"
-with open(path , 'r' , encoding='utf-8') as file :
-    location = json.load(file)
+def loc()
+    path = "Chapter_location.json"
+    with open(path , 'r' , encoding='utf-8') as file :
+        location = json.load(file)
+        return location 
 
 #==============================================
 
@@ -140,7 +144,7 @@ def tegbot() :
         chat_id = message.chat.id
         if chat_id not in user_status :
             user_status[chat_id] = 'BOT ACTIVE'
-            class_button = ['CLASS 12','CLASS 09'] #all class button load in location file 
+            class_button = ['CLASS 12','CLASS 09']
             all_btn = inline_buttons(class_button)
             bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
             bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
@@ -155,6 +159,7 @@ def tegbot() :
         className = f"CLASS_{call.data[6:]}"
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
+        location = loc()
         sub_list = list(location[className].keys()) #fatch all subjects in location file
         print(sub_list) 
         all_btn = inline_buttons(sub_list)
@@ -168,6 +173,7 @@ def tegbot() :
     def subject_handler(call) :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
+        location = loc()
         all_chap = list(location[bot_memory[chat_id]][call.data]
         ) #facth chapter's in location file
         all_btn = inline_buttons(all_chap)
