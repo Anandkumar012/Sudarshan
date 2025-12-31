@@ -296,7 +296,7 @@ def tegbot() :
                 f"👤 QUIZ STOPPED by {user_name}.\n"
                 f"✍🏻 If you want to restart quiz sent me /quiz")
             del user_status[chat_id]
-            if bot_memory[chat_id] in bot_memory :
+            if chat_id in bot_memory :
                 del bot_memory[chat_id]
             if f"SUB{chat_id}" in bot_memory :
                 del bot_memory[f"SUB{chat_id}"]
