@@ -104,6 +104,64 @@ location = {
             'Ch~08 LOCAL GOVERNMENTS',
             'Ch~09 THE CONSTITUTION AS A LIVING DOCUMENT'
         ]
+    },
+    
+    'CLASS_9': {
+        'SUB ~ PHYSICS': [
+            'Ch~01 MOTION',
+            'Ch~02 FORCE AND LAWS OF MOTION',
+            'Ch~03 GRAVITATION',
+            'Ch~04 WORK AND ENERGY',
+            'Ch~05 SOUND'
+        ],
+
+        'SUB ~ MATHEMATICS': [
+            'Ch~01 NUMBER SYSTEMS',
+            'Ch~02 POLYNOMIALS',
+            'Ch~03 COORDINATE GEOMETRY',
+            'Ch~04 LINEAR EQUATIONS IN TWO VARIABLES',
+            'Ch~05 TRIANGLES'
+        ],
+
+        'SUB ~ CHEMISTRY': [
+            'Ch~01 MATTER IN OUR SURROUNDINGS',
+            'Ch~02 IS MATTER AROUND US PURE',
+            'Ch~03 ATOMS AND MOLECULES',
+            'Ch~04 STRUCTURE OF ATOM',
+            'Ch~05 CHEMICAL REACTIONS AND EQUATIONS'
+        ],
+
+        'SUB ~ BIOLOGY': [
+            'Ch~01 THE FUNDAMENTAL UNIT OF LIFE',
+            'Ch~02 TISSUES',
+            'Ch~03 DIVERSITY IN LIVING ORGANISMS',
+            'Ch~04 WHY DO WE FALL ILL',
+            'Ch~05 NATURAL RESOURCES'
+        ],
+
+        'SUB ~ GEOGRAPHY': [
+            'Ch~01 INDIA – SIZE AND LOCATION',
+            'Ch~02 PHYSICAL FEATURES OF INDIA',
+            'Ch~03 DRAINAGE',
+            'Ch~04 CLIMATE',
+            'Ch~05 NATURAL VEGETATION AND WILDLIFE'
+        ],
+
+        'SUB ~ HISTORY': [
+            'Ch~01 THE FRENCH REVOLUTION',
+            'Ch~02 SOCIALISM IN EUROPE AND THE RUSSIAN REVOLUTION',
+            'Ch~03 NAZISM AND THE RISE OF HITLER',
+            'Ch~04 FOREST SOCIETY AND COLONIALISM',
+            'Ch~05 PASTORALISTS IN THE MODERN WORLD'
+        ],
+
+        'SUB ~ POLITY': [
+            'Ch~01 WHAT IS DEMOCRACY? WHY DEMOCRACY?',
+            'Ch~02 CONSTITUTIONAL DESIGN',
+            'Ch~03 ELECTORAL POLITICS',
+            'Ch~04 WORKING OF INSTITUTIONS',
+            'Ch~05 DEMOCRATIC RIGHTS'
+        ]
     }
 }
 
@@ -235,7 +293,7 @@ def tegbot() :
         chat_id = message.chat.id
         if chat_id not in user_status :
             user_status[chat_id] = 'BOT ACTIVE'
-            class_button = ['CLASS 12'] #all class button load in location file 
+            class_button = ['CLASS 12','CLASS 09] #all class button load in location file 
             all_btn = inline_buttons(class_button)
             bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
             bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
