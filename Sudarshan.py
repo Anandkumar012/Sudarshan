@@ -11,10 +11,14 @@ import json
 
 #location file load in file ,this is for demo
 def loc():
-    path = "Chapter_location.json"
-    with open(path , 'r' , encoding='utf-8') as file :
-        location = json.load(file)
-        return location 
+    try:
+        path = "Chapter_location.json"
+        with open(path , 'r' , encoding='utf-8') as file :
+            data = json.load(file)
+            return data
+    except Exception as e:
+        print("Chapter_location.json file not found",e)
+        return None
 
 #==============================================
 
@@ -121,8 +125,10 @@ def tegbot() :
     #start massege response 
     @bot.message_handler(commands = ["start"])
     def send_message(message) :
+        chat_id = message.chat.id
+        user_status[chat_id] = 'BOT ACTIVE'
         res_button =buttons(['/weather','/quiz'])
-        bot.send_message(message.chat.id , "👋🏻Hyy, I am weather bot.",reply_markup = res_button)
+        bot.send_message(chat_id , "👋🏻Hyy, I am weather bot.",reply_markup = res_button)
 
 #==============================================
     
@@ -150,7 +156,6 @@ def tegbot() :
     @bot.message_handler(commands = ["quiz"])
     def quiz(message) :
         chat_id = message.chat.id
-        user_status[chat_id] = 'BOT ACTIVE'
         class_button = ['CLASS 12','CLASS 09']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
@@ -165,6 +170,8 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
+        if location == None :
+            return
         sub_list = list(location[className].keys()) #fatch all subjects in location file 
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
@@ -178,6 +185,8 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
+        if location == None :
+            return
         all_chap = list(location[bot_memory[chat_id]][call.data]
         ) #facth chapter's in location file
         all_btn = inline_buttons(all_chap)
@@ -196,6 +205,7 @@ def tegbot() :
             bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
             return
         bot.send_message(chat_id, '📢 Quiz START')
+        user_status[chat_id] = 'QUIZ ACTIVE'
         #this condition remove in feature.
         if bot_memory[f'SUB{chat_id}'] == 'PHYSICS' :
             file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
@@ -208,7 +218,7 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if chat_id in user_status :
+        if user_status[chat_id] = 'QUIZ ACTIVE' :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
