@@ -106,7 +106,7 @@ location = {
         ]
     },
     
-    'CLASS_9': {
+    'CLASS_09': {
         'SUB ~ PHYSICS': [
             'Ch~01 MOTION',
             'Ch~02 FORCE AND LAWS OF MOTION',
