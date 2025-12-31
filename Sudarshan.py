@@ -248,8 +248,6 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
         className = f"CLASS_{call.data[6:]}"
-        #update in feature
-        print(className)
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         sub_list = list(location[className].keys()) #fatch all subjects in location file
@@ -280,8 +278,12 @@ def tegbot() :
         chapterName = call.data[:5]
         bot.answer_callback_query(call.id)
         bot.send_message(chat_id, '📢 Quiz START')
-        file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
-        sent_quiz_poll(bot , chat_id , chapterName,file_path)
+        #bot has not data.
+        if bot_memory[f'SUB{chat_id}'] == 'PHYSICS' :
+            file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
+            sent_quiz_poll(bot , chat_id , chapterName,file_path)
+        else :
+            bot.send_message(chat_id, '🥲SORRY, At this time bot has only PHYSICS data .')
 
 #==============================================
 
