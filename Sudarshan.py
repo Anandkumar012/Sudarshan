@@ -218,7 +218,7 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if user_status[chat_id] = 'QUIZ ACTIVE' :
+        if user_status[chat_id] == 'QUIZ ACTIVE' :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
