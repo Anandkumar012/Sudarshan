@@ -109,7 +109,7 @@ location = {
 
 #==============================================
 
-random option creation method
+#random option creation method
 def random_opts(options) :
     opts = []
     while len(options) != 0 :
