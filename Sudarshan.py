@@ -31,9 +31,13 @@ def random_opts(options) :
 #==============================================
 #json question load
 def load_question(file_path, chapter):
-    with open(file_path , 'r' , encoding='utf-8') as file :
-        load = json.load(file)
-        return load[chapter]
+    try :
+        with open(file_path , 'r' , encoding='utf-8') as file :
+            load = json.load(file)
+            return load[chapter]
+    except Exception as e :
+        print(f"error as {e}")
+        return None
 
 
 #==============================================
@@ -68,23 +72,27 @@ def inline_buttons(btnName):
 
 #quiz sent func
 def sent_quiz_poll(bot , chat_id , chapName,file_path) :
-    if chat_id not in user_status :
-        return
-    load_que = load_question(file_path ,chapName) #load quest according to chapter 
-    que = random.choice(load_que)
-    random.shuffle(que[1])  
-    #bot send poll func
-    send_poll = bot.send_poll(
-    chat_id = chat_id,
-    question = que[0],
-    options = que[1],
-    type = "quiz",
-    correct_option_id = que[1].index(que[2]),
-    is_anonymous = False,
-    open_period = 15)
+    try:
+        load_que = load_question(file_path ,chapName) #load quest according to chapter 
+        que = random.choice(load_que)
+        random.shuffle(que[1])  
         
-    #bot repeat questions func
-    threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapName , file_path]).start()
+        #bot send poll func
+        send_poll = bot.send_poll(chat_id = chat_id,
+            question = que[0],
+            options = que[1],
+            type = "quiz",
+            correct_option_id = que[1].index(que[2]),
+            is_anonymous = False,
+            open_period = 15
+                                  )
+        
+        #bot repeat questions func
+        threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapName , file_path]).start()
+    except Exception as e :
+        print(f"error as {e}")
+        bot.send_message(chat_id, "⚠️ Sorry 😐 Internal issue, try later")
+        return None
 
 #==============================================
 
@@ -142,14 +150,11 @@ def tegbot() :
     @bot.message_handler(commands = ["quiz"])
     def quiz(message) :
         chat_id = message.chat.id
-        if chat_id not in user_status :
-            user_status[chat_id] = 'BOT ACTIVE'
-            class_button = ['CLASS 12','CLASS 09']
-            all_btn = inline_buttons(class_button)
-            bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
-            bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
-        else :
-            bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
+        user_status[chat_id] = 'BOT ACTIVE'
+        class_button = ['CLASS 12','CLASS 09']
+        all_btn = inline_buttons(class_button)
+        bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
+        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
 
 #==============================================
            
@@ -160,8 +165,7 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        sub_list = list(location[className].keys()) #fatch all subjects in location file
-        print(sub_list) 
+        sub_list = list(location[className].keys()) #fatch all subjects in location file 
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
         bot_memory[chat_id] = className    
@@ -188,8 +192,11 @@ def tegbot() :
         chat_id = call.message.chat.id
         chapterName = call.data[:5]
         bot.answer_callback_query(call.id)
+        if chat_id in user_status :
+            bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
+            return
         bot.send_message(chat_id, '📢 Quiz START')
-        #bot has not data.
+        #this condition remove in feature.
         if bot_memory[f'SUB{chat_id}'] == 'PHYSICS' :
             file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
             sent_quiz_poll(bot , chat_id , chapterName,file_path)
@@ -214,7 +221,7 @@ def tegbot() :
                 del bot_memory[f"SUB{chat_id}"]
             bot.send_message(chat_id , stop_text)
         else :
-            pass
+            bot.send_message(chat_id ,"🤖 There is no active process running right now.You can /start one anytime.")
             
 #=============================================
 
