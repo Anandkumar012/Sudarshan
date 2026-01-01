@@ -34,11 +34,11 @@ def random_opts(options) :
 
 #==============================================
 #json question load
-def load_question(file_path, chapter):
+def load_question(file_path, chapterNumber):
     try :
         with open(file_path , 'r' , encoding='utf-8') as file :
             load = json.load(file)
-            return load[chapter]
+            return load[chapterNumber]
     except Exception as e :
         print(f"error as {e}")
         return None
@@ -48,12 +48,11 @@ def load_question(file_path, chapter):
 
 #Keyboard button creation
 def buttons(btnName) :
-    btns = btnName
     markup = types.ReplyKeyboardMarkup(row_width = 4 , resize_keyboard = True)
     all_button = []
-    for button in btns :   
+    for button in btnName :   
         btn = types.KeyboardButton(button)
-        all_button.append(btn)
+        all_button.append(btnName)
     markup.add(*all_button)
     return markup
 
@@ -61,11 +60,10 @@ def buttons(btnName) :
 
 #INLINE BUTTONS CREMATION
 def inline_buttons(btnName):
-    btns = btnName
-    markup = types.InlineKeyboardMarkup(row_width=1 if any(len(btn) >= 10 for btn in btns ) else 3) 
+    markup = types.InlineKeyboardMarkup(row_width=1 if any(len(btn) >= 10 for btn in btnName ) else 3) 
     
     all_button = []    
-    for button in btns : 
+    for button in btnName : 
         btn = types.InlineKeyboardButton(button,callback_data = button)
         all_button.append(btn)
     
@@ -75,9 +73,9 @@ def inline_buttons(btnName):
 #=============================================
 
 #quiz sent func
-def sent_quiz_poll(bot , chat_id , chapName,file_path) :
+def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
     try:
-        load_que = load_question(file_path ,chapName) #load quest according to chapter 
+        load_que = load_question(file_path ,chapNum) #load quest according to chapter 
         que = random.choice(load_que)
         random.shuffle(que[1])  
         
@@ -92,7 +90,7 @@ def sent_quiz_poll(bot , chat_id , chapName,file_path) :
                                   )
         
         #bot repeat questions func
-        threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapName , file_path]).start()
+        threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path]).start()
     except Exception as e :
         print(f"error as {e}")
         bot.send_message(chat_id, "⚠️ Sorry 😐 Internal issue, try later")
@@ -159,23 +157,26 @@ def tegbot() :
         class_button = ['CLASS 12','CLASS 09']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
-        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early')
+        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
+        user_status[chat_id] = 'QUIZ MOD ACTIVATE'
 
 #==============================================
            
     #CLASS handler    
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
-        className = f"CLASS_{call.data[6:]}"
+        className = call.data.replace(" ","_")
         print(className)
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         print("className")
         location = loc()
-        if location == None :
-            print("data")
+        if location is None or className not in location:
+            print("class not found")
+            bot.send_message(chat_id, '🤖 Class not in data.')
             return
-        sub_list = list(location[className].keys()) #fatch all subjects in location file 
+        sub_list =
+list(location[className].keys()) #fatch all subjects in location file 
         print(sub_list)
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
@@ -189,7 +190,9 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        if location == None :
+        if location is None or call.data not in location :
+            print("Subject not found")
+            bot.send_message(chat_id, '🤖 Subject not in data.')
             return
         all_chap = list(location[bot_memory[chat_id]][call.data]
         ) #facth chapter's in location file
@@ -203,17 +206,18 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
     def question(call) :
         chat_id = call.message.chat.id
-        chapterName = call.data[:5]
+        chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
-        if chat_id in user_status :
+        
+        if chat_id in user_status:
             bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
             return
         bot.send_message(chat_id, '📢 Quiz START')
-        user_status[chat_id] = 'QUIZ ACTIVE'
+        user_status[chat_id] = 'QUIZ START'
         #this condition remove in feature.
-        if bot_memory[f'SUB{chat_id}'] == 'PHYSICS' :
+        if bot_memory.get(f'SUB{chat_id}') == 'PHYSICS' :
             file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
-            sent_quiz_poll(bot , chat_id , chapterName,file_path)
+            sent_quiz_poll(bot , chat_id , chapNum,file_path)
         else :
             bot.send_message(chat_id, '🥲SORRY, At this time bot has only PHYSICS data .')
 
@@ -222,7 +226,7 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if user_status[chat_id] == 'QUIZ ACTIVE' :
+        if user_status.get(chat_id) == 'QUIZ START' :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
