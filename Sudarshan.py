@@ -11,14 +11,14 @@ import json
 
 #location file load in file ,this is for demo
 def loc():
-    try:
-        path = "Chapter_location.json"
-        with open(path , 'r' , encoding='utf-8') as file :
-            data = json.load(file)
-            return data
-    except Exception as e:
-        print("Chapter_location.json file not found",e)
-        return None
+    #try:
+    path = "Chapter_location.json"
+    with open(path , 'r' , encoding='utf-8') as file :
+        data = json.load(file)
+        return data
+    #except Exception as e:
+        #print("Chapter_location.json file not found",e)
+        #return None
 
 #==============================================
 
@@ -166,17 +166,14 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('CLASS'))
     def class_handler(call) :
         className = call.data.replace(" ","_")
-        print(className)
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
-        print("className")
         location = loc()
         if location is None or className not in location:
             print("class not found")
             bot.send_message(chat_id, '🤖 Class not in data.')
             return
         sub_list = list(location[className].keys())
-        print(sub_list)
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
         bot_memory[chat_id] = className    
@@ -252,7 +249,7 @@ def tegbot() :
 #==============================================
 
 if __name__ == "__main__" :
-    try :
-        tegbot()
-    except Exception as e :
-        print(f"error as {e}")
+    #try :
+    tegbot()
+    #except Exception as e :
+        #print(f"error as {e}")
