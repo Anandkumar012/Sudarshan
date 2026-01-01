@@ -11,14 +11,14 @@ import json
 
 #location file load in file ,this is for demo
 def loc():
-    #try:
-    path = "Chapter_location.json"
-    with open(path , 'r' , encoding='utf-8') as file :
-        data = json.load(file)
-        return data
-    #except Exception as e:
-        #print("Chapter_location.json file not found",e)
-        #return None
+    try:
+        path = "Chapter_location.json"
+        with open(path , 'r' , encoding='utf-8') as file :
+           data = json.load(file)
+           return data
+    except Exception as e:
+        print("Chapter_location.json file not found",e)
+        return None
 
 #==============================================
 
@@ -249,7 +249,7 @@ def tegbot() :
 #==============================================
 
 if __name__ == "__main__" :
-    #try :
-    tegbot()
-    #except Exception as e :
-        #print(f"error as {e}")
+    try :
+        tegbot()
+    except Exception as e :
+        print(f"error as {e}")
