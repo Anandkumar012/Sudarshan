@@ -175,8 +175,7 @@ def tegbot() :
             print("class not found")
             bot.send_message(chat_id, '🤖 Class not in data.')
             return
-        sub_list =
-list(location[className].keys()) #fatch all subjects in location file 
+        sub_list = list(location[className].keys())
         print(sub_list)
         all_btn = inline_buttons(sub_list)
         bot.send_message(chat_id, '✍🏻 SELECT YOUR SUBJECT.',reply_markup = all_btn)
