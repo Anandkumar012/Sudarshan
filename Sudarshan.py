@@ -74,6 +74,8 @@ def inline_buttons(btnName):
 
 #quiz sent func
 def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
+    if chat_id not in user_status :
+        return
     try:
         load_que = load_question(file_path ,chapNum) #load quest according to chapter 
         que = random.choice(load_que)
@@ -122,9 +124,8 @@ def tegbot() :
 
     #start massege response 
     @bot.message_handler(commands = ["start"])
-    def send_message(message) :
+    def strat_handler(message) :
         chat_id = message.chat.id
-        user_status[chat_id] = 'BOT ACTIVE'
         res_button =buttons(['/weather','/quiz'])
         bot.send_message(chat_id , "👋🏻Hyy, I am  a bot.",reply_markup = res_button)
 
@@ -132,7 +133,7 @@ def tegbot() :
     
     #weather massage response 
     @bot.message_handler(commands = ["weather"])
-    def send_message1(message) :
+    def weather_handler(message) :
         btns = buttons(indian_cities)
         bot.send_message(message.chat.id, "✍🏻Enter your city name.", reply_markup = btns)
      
@@ -140,7 +141,7 @@ def tegbot() :
     
     #weather details responser
     @bot.message_handler(func = lambda message : not message.text.startswith('/'))
-    def weather(message):
+    def weather_responser(message):
        try :
            loc, cur= get_weather(message.text)
             #Here , I am showing all data .formate is dict.
@@ -153,6 +154,11 @@ def tegbot() :
     
     @bot.message_handler(commands = ["quiz"])
     def quiz(message) :
+        #same id can not start 2 quiz in one time
+        if user_status.get(chat_id) == "QUIZ MOD ACTIVATE":
+            bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
+            return
+    
         chat_id = message.chat.id
         class_button = ['CLASS 12','CLASS 09']
         all_btn = inline_buttons(class_button)
@@ -200,17 +206,11 @@ def tegbot() :
        
     #CHAPTER handler  
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
-    def question(call) :
+    def chap_handler(call) :
         chat_id = call.message.chat.id
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
-        bot.send_message(chat_id, '📢 Quiz START')
-        #same id can not start 2 quiz in one time
-        #if user_status.get(chat_id) == "QUIZ START":
-            #bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
-            #return
-        user_status[chat_id] = 'QUIZ START'
-        #this condition remove in feature.
+ #this condition remove in feature.
         if bot_memory.get(f'SUB{chat_id}') == 'PHYSICS' :
             file_path = f"{bot_memory[chat_id]}_{bot_memory[f'SUB{chat_id}']}_DATASET.json"
             sent_quiz_poll(bot , chat_id , chapNum,file_path)
@@ -222,7 +222,7 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if user_status.get(chat_id) == 'QUIZ START' :
+        if user_status.get(chat_id) == 'QUIZ MOD ACTIVATE' :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
