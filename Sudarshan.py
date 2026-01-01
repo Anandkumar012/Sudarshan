@@ -186,7 +186,7 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        if location is None or call.data not in list(location[bot_memory.get(chat_id)]) :
+        if location is None :
             print("Subject not found")
             bot.send_message(chat_id, '🤖 Subject not in data.')
             return
