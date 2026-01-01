@@ -75,7 +75,7 @@ def inline_buttons(btnName):
 #quiz sent func
 def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
     #same id can not start 2 quiz in one time
-    if user_status.get(chat_id) == 'QUIZ START":
+    if user_status.get(chat_id) == "QUIZ START":
         bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
         return
     try:
