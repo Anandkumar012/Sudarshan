@@ -186,11 +186,11 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        if location is None or call.data not in location :
+        if location is None or call.data not in list(location[bot_memory.get(chat_id)) :
             print("Subject not found")
             bot.send_message(chat_id, '🤖 Subject not in data.')
             return
-        all_chap = list(location[bot_memory[chat_id]][call.data]
+        all_chap = list(location[bot_memory.get(chat_id)][call.data]
         ) #facth chapter's in location file
         all_btn = inline_buttons(all_chap)
         bot.send_message(chat_id , '✍🏻 SELECT YOUR CHAPTER.', reply_markup = all_btn)
