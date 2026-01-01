@@ -52,7 +52,7 @@ def buttons(btnName) :
     all_button = []
     for button in btnName :   
         btn = types.KeyboardButton(button)
-        all_button.append(btnName)
+        all_button.append(btn)
     markup.add(*all_button)
     return markup
 
@@ -154,12 +154,11 @@ def tegbot() :
     
     @bot.message_handler(commands = ["quiz"])
     def quiz(message) :
+        chat_id = message.chat.id
         #same id can not start 2 quiz in one time
         if user_status.get(chat_id) == "QUIZ MOD ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
-    
-        chat_id = message.chat.id
         class_button = ['CLASS 12','CLASS 09']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
