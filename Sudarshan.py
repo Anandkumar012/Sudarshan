@@ -74,10 +74,6 @@ def inline_buttons(btnName):
 
 #quiz sent func
 def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
-    #same id can not start 2 quiz in one time
-    if user_status.get(chat_id) == "QUIZ START":
-        bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
-        return
     try:
         load_que = load_question(file_path ,chapNum) #load quest according to chapter 
         que = random.choice(load_que)
@@ -209,6 +205,10 @@ def tegbot() :
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
         bot.send_message(chat_id, '📢 Quiz START')
+        #same id can not start 2 quiz in one time
+        #if user_status.get(chat_id) == "QUIZ START":
+            #bot.send_message(chat_id , 'you are already start quiz.if you can stop your quiz send me /stop .')
+            #return
         user_status[chat_id] = 'QUIZ START'
         #this condition remove in feature.
         if bot_memory.get(f'SUB{chat_id}') == 'PHYSICS' :
