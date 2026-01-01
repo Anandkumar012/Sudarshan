@@ -1,5 +1,5 @@
 {
-    "CLASS_12": {
+    "CLASS_12" : {
         "SUB ~ PHYSICS": [
             "Ch~01 ELECTRIC CHARGES & FIELDS",
             "Ch~02 ELECTROSTATIC POTENTIAL & CAPACITANCE",
@@ -93,10 +93,10 @@
             "Ch~07 FEDERALISM",
             "Ch~08 LOCAL GOVERNMENTS",
             "Ch~09 THE CONSTITUTION AS A LIVING DOCUMENT"
-        ],
+        ]
     },
 
-    "CLASS_09": {
+    "CLASS_O9": {
         "SUB ~ PHYSICS": [
             "Ch~01 MOTION",
             "Ch~02 FORCE AND LAWS OF MOTION",
