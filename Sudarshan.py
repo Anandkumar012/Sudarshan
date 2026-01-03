@@ -156,7 +156,7 @@ def tegbot() :
     def quiz(message) :
         chat_id = message.chat.id
         #same id can not start 2 quiz in one time
-        if user_status.get(chat_id) == "QUIZ MOD ACTIVATE":
+        if user_status.get(chat_id) == "QUIZ ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
         class_button = ['CLASS 12','CLASS 09','CLASS SSC']
@@ -174,6 +174,8 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
+        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+            bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
         if location is None or className not in location:
             print("class not found")
             bot.send_message(chat_id, '🤖 Class not in data.')
@@ -191,6 +193,8 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
+        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+            bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
         if location is None :
             print("Subject not found")
             bot.send_message(chat_id, '🤖 Subject not in data.')
@@ -206,8 +210,10 @@ def tegbot() :
     #CHAPTER handler  
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
     def chap_handler(call) :
-        #user_status[chat_id] = 'QUIZ MOD ACTIVATE'
         chat_id = call.message.chat.id
+        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+            bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
+        user_status[chat_id] = 'QUIZ ACTIVATE'
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
  #this condition remove in feature.
@@ -222,7 +228,7 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if user_status.get(chat_id) == 'QUIZ MOD ACTIVATE' :
+        if user_status.get(chat_id) == 'QUIZ ACTIVATE' :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
