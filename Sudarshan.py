@@ -88,11 +88,11 @@ def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
             type = "quiz",
             correct_option_id = que[1].index(que[2]),
             is_anonymous = False,
-            open_period = 15
+            open_period = 30
                                   )
         
         #bot repeat questions func
-        threading.Timer(15.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path]).start()
+        threading.Timer(30.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path]).start()
     except Exception as e :
         print(f"error as {e}")
         bot.send_message(chat_id, "⚠️ Sorry 😐 Internal issue, try later")
@@ -162,7 +162,7 @@ def tegbot() :
         class_button = ['CLASS 12','CLASS 09','CLASS SSC']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
-        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
+        bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working  for class 12 & 09 → physics\nand ssc Reasoning.I will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
         user_status[chat_id] = 'QUIZ MOD ACTIVATE'
 
 #==============================================
