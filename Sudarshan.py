@@ -163,7 +163,7 @@ def tegbot() :
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
         bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
-        #user_status[chat_id] = 'QUIZ MOD ACTIVATE'
+        user_status[chat_id] = 'QUIZ MOD ACTIVATE'
 
 #==============================================
            
@@ -206,7 +206,7 @@ def tegbot() :
     #CHAPTER handler  
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
     def chap_handler(call) :
-        user_status[chat_id] = 'QUIZ MOD ACTIVATE'
+        #user_status[chat_id] = 'QUIZ MOD ACTIVATE'
         chat_id = call.message.chat.id
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
