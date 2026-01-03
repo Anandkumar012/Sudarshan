@@ -159,7 +159,7 @@ def tegbot() :
         if user_status.get(chat_id) == "QUIZ MOD ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
-        class_button = ['CLASS 12','CLASS 09']
+        class_button = ['CLASS 12','CLASS 09','CLASS SSC']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
         bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working only for class 12 → physics\nI will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
