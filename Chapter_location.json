@@ -152,5 +152,13 @@
             "Ch~04 WORKING OF INSTITUTIONS",
             "Ch~05 DEMOCRATIC RIGHTS"
         ]
-    }
+    },
+    "CLASS_SSC" : {
+        "SUB ~ REASONING" : [
+            "Ch~01 CALANDER",
+            "Ch~02 CODING & DECODING",
+            "Ch~03 TIME & DIRECTION",
+            "Ch~04 CLOCK",
+            "Ch~05 CUBE & DISE"]
+        }
 }
