@@ -176,6 +176,7 @@ def tegbot() :
         location = loc()
         if user_status.get(chat_id) == "QUIZ ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
+            return
         if location is None or className not in location:
             print("class not found")
             bot.send_message(chat_id, '🤖 Class not in data.')
@@ -195,6 +196,7 @@ def tegbot() :
         location = loc()
         if user_status.get(chat_id) == "QUIZ ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
+            return
         if location is None :
             print("Subject not found")
             bot.send_message(chat_id, '🤖 Subject not in data.')
@@ -213,6 +215,7 @@ def tegbot() :
         chat_id = call.message.chat.id
         if user_status.get(chat_id) == "QUIZ ACTIVATE":
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
+            return
         user_status[chat_id] = 'QUIZ ACTIVATE'
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
