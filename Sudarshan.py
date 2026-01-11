@@ -74,8 +74,6 @@ def inline_buttons(btnName):
 
 #quiz sent func
 def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
-    if chat_id not in user_status :
-        return
     try:
         load_que = load_question(file_path ,chapNum) #load quest according to chapter 
         que = random.choice(load_que)
@@ -92,7 +90,11 @@ def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
                                   )
         
         #bot repeat questions func
-        threading.Timer(30.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path]).start()
+        timer = threading.Timer(30.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path])
+        if chat_id not in user_status :
+            timer.cancel()
+            return
+        timer.start()
     except Exception as e :
         print(f"error as {e}")
         bot.send_message(chat_id, "⚠️ Sorry 😐 Internal issue, try later")
