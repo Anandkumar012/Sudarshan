@@ -80,7 +80,7 @@ def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
         random.shuffle(que[1])  
         
         #bot send poll func
-        send_poll = bot.send_poll(chat_id = chat_id,
+        bot.send_poll(chat_id = chat_id,
             question = que[0],
             options = que[1],
             type = "quiz",
@@ -91,9 +91,7 @@ def sent_quiz_poll(bot , chat_id , chapNum,file_path) :
         
         #bot repeat questions func
         timer = threading.Timer(30.3, sent_quiz_poll, args=[bot, chat_id ,chapNum , file_path])
-        if chat_id not in user_status :
-            timer.cancel()
-            return
+        user_status[chat_id] = timer
         timer.start()
     except Exception as e :
         print(f"error as {e}")
@@ -158,14 +156,13 @@ def tegbot() :
     def quiz(message) :
         chat_id = message.chat.id
         #same id can not start 2 quiz in one time
-        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+        if chat_id in user_status:
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
         class_button = ['CLASS 12','CLASS 09','CLASS SSC']
         all_btn = inline_buttons(class_button)
         bot.send_message(chat_id, '✍🏻 SELECET YOUR CLASS.',reply_markup = all_btn)
         bot.send_message(chat_id, 'SORRY , This bot is working condition becasuse at present data are not available for bot\nIt is working  for class 12 & 09 → physics\nand ssc Reasoning.I will all data for this bot early',reply_markup = types.ReplyKeyboardRemove())
-        user_status[chat_id] = 'QUIZ MOD ACTIVATE'
 
 #==============================================
            
@@ -176,7 +173,7 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+        if chat_id in user_status:
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
         if location is None or className not in location:
@@ -196,7 +193,7 @@ def tegbot() :
         chat_id = call.message.chat.id
         bot.answer_callback_query(call.id)
         location = loc()
-        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+        if chat_id in user_status:
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
         if location is None :
@@ -215,10 +212,9 @@ def tegbot() :
     @bot.callback_query_handler(func = lambda call : call.data.startswith('Ch~'))
     def chap_handler(call) :
         chat_id = call.message.chat.id
-        if user_status.get(chat_id) == "QUIZ ACTIVATE":
+        if chat_id in user_status:
             bot.send_message(chat_id , '⚠️ One quiz at a time 😊\nYou already have an active quiz.\n/stop it first, then you can start a new one.')
             return
-        user_status[chat_id] = 'QUIZ ACTIVATE'
         chapNum = call.data[:5]
         bot.answer_callback_query(call.id)
  #this condition remove in feature.
@@ -233,12 +229,13 @@ def tegbot() :
     @bot.message_handler(commands = ["stop"])
     def stop_bot(message) :
         chat_id = message.chat.id
-        if user_status.get(chat_id) == 'QUIZ ACTIVATE' :
+        if chat_id in user_status :
             user_name = message.from_user.first_name
             stop_text = (
                 f"📌NOTICE📌\n\n"
                 f"👤 QUIZ STOPPED by {user_name}.\n"
                 f"✍🏻 If you want to restart quiz sent me /quiz")
+            user_status[chat_id].cancel() 
             del user_status[chat_id]
             if chat_id in bot_memory :
                 del bot_memory[chat_id]
